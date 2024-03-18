@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(blink)
+project(servercom)
 
 find_package(CURL REQUIRED)
 
@@ -14,10 +14,11 @@ include_directories(${INCLUDES})
 # Add your source files
 set(SOURCES
     src/lib/file_utils.cpp
+    src/lib/ipc_shared_file.cpp
     src/main.cpp
 )
 
 # Create the executable
-add_executable(blink ${SOURCES})
-install(TARGETS blink RUNTIME DESTINATION bin)
-target_link_libraries(blink CURL::libcurl)
+add_executable(servercom ${SOURCES})
+install(TARGETS servercom RUNTIME DESTINATION bin)
+target_link_libraries(servercom CURL::libcurl)

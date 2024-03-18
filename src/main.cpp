@@ -1,5 +1,6 @@
 /* Copyright (C) 2020, Frank Vasquez (frank.vasquez@gmail.com) */
 #include <stdio.h>
+#include <stdlib.h>
 #include <fcntl.h>
 #include <fstream>
 #include <unistd.h>
@@ -15,6 +16,7 @@
 #include <ctime>
 
 #include "file_utils.h"
+#include "ipc_shared_file.h"
 
 #define API_KEY "25964978-bbcc-48ec-a252-96e2d7964461"
 
@@ -154,7 +156,6 @@ static void *HttpThread(void *arg)
 	return NULL;
 }
 
-
 int main(int argc, char *argv[])
 {
 	pthread_t jsonT, httpT;
@@ -165,6 +166,9 @@ int main(int argc, char *argv[])
 
 	pthread_join(jsonT, NULL);
 	pthread_join(httpT, NULL);
+
+	// IPC using a shared file
+	IPC_sharedFile_send();
 
 	printf("App stopped");
 	return 0;
