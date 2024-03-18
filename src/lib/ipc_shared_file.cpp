@@ -1,10 +1,5 @@
 #include "ipc_shared_file.h"
 
-void report_and_exit(const char* msg) {
-  perror(msg);
-  exit(-1); /* EXIT_FAILURE */
-}
-
 void IPC_sharedFile_send(void)
 {
 	struct flock lock;
@@ -40,7 +35,7 @@ void IPC_sharedFile_send(void)
 	close(fd); /* close the file: would unlock if needed */
 }
 
-static void IPC_sharedFile_receive(void)
+void IPC_sharedFile_receive(void)
 {
 	struct flock lock;
 	lock.l_type = F_WRLCK;    /* read/write (exclusive) lock */

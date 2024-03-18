@@ -17,6 +17,7 @@
 
 #include "file_utils.h"
 #include "ipc_shared_file.h"
+#include "ipc_shared_memory.h"
 
 #define API_KEY "25964978-bbcc-48ec-a252-96e2d7964461"
 
@@ -167,8 +168,10 @@ int main(int argc, char *argv[])
 	pthread_join(jsonT, NULL);
 	pthread_join(httpT, NULL);
 
-	// IPC using a shared file
-	IPC_sharedFile_send();
+	/* IPC using a shared file */
+	// IPC_sharedFile_send();
+	/* IPC using shared memory */
+	IPC_sharedMemory_send();
 
 	printf("App stopped");
 	return 0;

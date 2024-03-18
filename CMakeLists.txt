@@ -14,7 +14,9 @@ include_directories(${INCLUDES})
 # Add your source files
 set(SOURCES
     src/lib/file_utils.cpp
+    src/lib/app_utils.cpp
     src/lib/ipc_shared_file.cpp
+    src/lib/ipc_shared_memory.cpp
     src/main.cpp
 )
 
